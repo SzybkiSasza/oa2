@@ -41,7 +41,7 @@ function validateConfig(config, schema) {
   // Clone the config, as AJV mutates objects when assigning defaults
   config = cloneDeep(config);
 
-  const result = ajv.validate(backoff, config);
+  const result = ajv.validate(schema, config);
   if (!result) {
     throw new Error(ajv.errorsText());
   }
