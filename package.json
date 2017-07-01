@@ -2,13 +2,13 @@
   "name": "oa2",
   "version": "0.0.1",
   "description": "OAuth 1/2 made simple",
-  "main": "lib/index.js",
+  "main": "lib/oauth",
   "scripts": {
     "build": "babel src -d lib --ignore *.test.js",
     "coverage": "jest --coverage",
     "codacy": "npm run coverage && cat ./coverage/lcov.info | codacy-coverage && rm -rf ./coverage",
     "lint": "eslint --fix src",
-    "prepublish": "npm run build",
+    "prepublish": "rm -rf ./lib && npm run build",
     "test": "jest"
   },
   "repository": {
