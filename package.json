@@ -4,6 +4,11 @@
   "description": "OAuth 1/2 made simple",
   "main": "lib/index.js",
   "scripts": {
+    "build": "babel src -d lib --ignore *.test.js",
+    "coverage": "jest --coverage",
+    "codacy": "npm run coverage && cat ./coverage/lcov.info | codacy-coverage && rm -rf ./coverage",
+    "lint": "eslint --fix src",
+    "prepublish": "npm run build",
     "test": "jest"
   },
   "repository": {
