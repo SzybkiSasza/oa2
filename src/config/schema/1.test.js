@@ -13,14 +13,13 @@ describe('OAuth 1.0 config schema', () => {
 
   it('Requires 3 URLs', () => {
     const config = {
-      accessTokenURL: 'https://some-url.com/at',
       authURL: 'https://some-url.com/auth',
     };
 
     const result = ajv.validate(oauth1Schema, config);
     expect(result).toEqual(false);
     expect(ajv.errorsText())
-      .toEqual('data should have required property \'requestTokenURL\'');
+      .toEqual('data should have required property \'accessTokenURL\'');
   });
 
   it('Requires URLs to be a proper URL', () => {

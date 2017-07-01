@@ -7,7 +7,7 @@ export default {
       type: 'string',
       format: 'url',
     },
-    authURL: {
+    authURL: { // Not required, as not needed in one and two legged scenarios
       type: 'string',
       format: 'url',
     },
@@ -25,5 +25,5 @@ export default {
     },
     backoff,
   },
-  required: ['accessTokenURL', 'authURL', 'requestTokenURL'],
+  required: ['accessTokenURL'],
 };
