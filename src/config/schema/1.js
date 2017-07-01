@@ -4,13 +4,16 @@ export default {
   type: 'object',
   properties: {
     accessTokenURL: {
-      type: 'url',
+      type: 'string',
+      format: 'url',
     },
     authURL: {
-      type: 'url',
+      type: 'string',
+      format: 'url',
     },
     requestTokenURL: {
-      type: 'url',
+      type: 'string',
+      format: 'url',
     },
     signatureMethod: {
       type: 'string',
