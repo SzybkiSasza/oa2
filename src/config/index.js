@@ -1,12 +1,12 @@
 import Ajv from 'ajv';
+import {cloneDeep} from 'lodash';
+
+import schema1 from './schema/1';
+
 const ajv = new Ajv({
   $data: true,
   useDefaults: true,
 });
-
-import {cloneDeep} from 'lodash';
-
-import schema1 from './schema/1';
 
 /**
  * Builds the config for OAuth client
@@ -25,9 +25,8 @@ export function build(config, version = '1.0') {
  * @param  {String} version           OAuth version
  */
 function checkOAuthVersion(version) {
-  const validation = Joi.string().valid(['v1']).required().validate(version);
-  if (validation.error) {
-    throw new Error(`Wrong OAuth version passed: ${version}`);
+  if (version !== '1.0') {
+    throw new Error(`Unsupported OAuth version passed: ${version}`);
   }
 }
 
