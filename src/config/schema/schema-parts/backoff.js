@@ -1,6 +1,7 @@
 export default {
   id: '\Backoff',
   type: 'object',
+  default: {},
   properties: {
     retries: {
       default: 10,
