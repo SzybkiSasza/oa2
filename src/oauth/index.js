@@ -1,9 +1,9 @@
-import V1 from './v1';
+import O1 from './1';
 
 export default {
-  V1,
+  O1,
 };
 
 export {
-  V1,
+  O1,
 };
