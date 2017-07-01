@@ -1,8 +1,12 @@
-import {cloneDeep, defaults} from 'lodash';
+import Ajv from 'ajv';
+const ajv = new Ajv({
+  $data: true,
+  useDefaults: true,
+});
+
+import {cloneDeep} from 'lodash';
 
 import schema1 from './schema/1';
-
-import default1 from './defaults/1';
 
 /**
  * Builds the config for OAuth client
@@ -12,7 +16,7 @@ import default1 from './defaults/1';
  */
 export function build(config, version = '1.0') {
   checkOAuthVersion(version);
-  return mergeConfig(config, schema1, default1);
+  return validateConfig(config, schema1);
 }
 
 /**
@@ -28,16 +32,19 @@ function checkOAuthVersion(version) {
 }
 
 /**
- * Validates config and merges with defaults
- * @param  {Object} config        Input config
- * @param  {Object} schema        Joi schema to check config against
- * @param  {Object} defaultConfig Config defaults
- * @return {Object|Error}         Built config or thrown error
+ * Validates the passed config based on the schema
+ * @param  {Object} config Input config
+ * @param  {Object} schema Schema definition
+ * @return {Object}        Resulting config
  */
-function mergeConfig(config, schema, defaultConfig) {
-  const mergedConfig = defaults(cloneDeep(config), defaultConfig);
+function validateConfig(config, schema) {
+  // Clone the config, as AJV mutates objects when assigning defaults
+  config = cloneDeep(config);
 
-  // Validate if config meets the schema
+  const result = ajv.validate(backoff, config);
+  if (!result) {
+    throw new Error(ajv.errorsText());
+  }
 
-  return mergedConfig;
+  return config;
 }
