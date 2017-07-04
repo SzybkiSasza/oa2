@@ -28,7 +28,6 @@ export default {
       items: {
         type: 'string',
       },
-      minItems: 1,
       uniqueItems: true,
     },
 
