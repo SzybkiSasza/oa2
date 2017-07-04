@@ -14,9 +14,14 @@ export default {
     },
 
     // Token endpoint parameters
+    isRefreshable: {
+      type: 'boolean',
+      default: false, // By default, we do not allow token refreshing.
+    },
     responseType: {
-      type: 'array',
-      items: ['token', 'code'],
+      type: 'string',
+      enum: ['token', 'code'],
+      default: 'code',
     },
     scope: {
       type: 'array',
@@ -35,5 +40,5 @@ export default {
     // Standard backoff schema
     backoff,
   },
-  required: ['authURL', 'tokenURL', 'scope'],
+  required: ['authURL', 'tokenURL', 'isRefreshable', 'responseType', 'scope'],
 };
