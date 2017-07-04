@@ -1,4 +1,4 @@
-import backoff from '../common/backoff';
+import backoff from '../../common/schema/backoff';
 
 export default {
   id: 'OAuth1/config',

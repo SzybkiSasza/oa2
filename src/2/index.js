@@ -1,4 +1,7 @@
-import getConfig from '../../schema/get-config';
+import validate from '../common/schema/validate';
+
+import clientSchema from './schema/client';
+import configSchema from './schema/config';
 
 /**
  * OAuth 2 handlers
@@ -9,7 +12,7 @@ export class O2 {
    * @param  {Object} config Input config
    */
   constructor(config) {
-    this.config = build(config, '2.0');
+    this.config = validate(config, configSchema);
   }
 
   /**
@@ -21,7 +24,7 @@ export class O2 {
    * @return {String}                 Authorization URL
    */
   getAuthorizeURL(client, optionals) {
-    validateClient(client);
+    client = validate(client, clientSchema);
     return '';
   }
 }
