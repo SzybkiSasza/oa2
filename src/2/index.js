@@ -20,6 +20,8 @@ export class O2 {
 
   /**
    * Gets URL used for authorizing
+   * Note: For OAuth2.0 there is no requirement to sort the params in QS
+   *
    * @param  {Object} client          Client config
    * @param  {Object} optionals       Optional params to be passed to the URL
    * @param  {Object} overrides       Overrides for the default configuration
