@@ -1,14 +1,14 @@
 {
   "name": "oa2",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "OAuth 1/2 made simple",
   "main": "lib/oauth",
   "scripts": {
-    "build": "babel src -d lib --ignore *.test.js",
+    "build": "rm -rf ./lib && babel src -d lib --ignore *.test.js",
     "coverage": "jest --coverage",
     "codacy": "npm run coverage && cat ./coverage/lcov.info | codacy-coverage && rm -rf ./coverage",
     "lint": "eslint --fix src",
-    "prepublish": "rm -rf ./lib && npm run build",
+    "prepublish": "npm run build",
     "test": "jest"
   },
   "repository": {
@@ -29,6 +29,7 @@
   "homepage": "https://github.com/SzybkiSasza/oa2#readme",
   "dependencies": {
     "ajv": "^5.2.0",
+    "axios": "^0.16.2",
     "babel-runtime": "^6.23.0",
     "debug": "^2.6.8",
     "lodash": "^4.17.4"
@@ -42,8 +43,7 @@
     "codacy-coverage": "^2.0.2",
     "eslint": "^4.1.1",
     "eslint-config-google": "^0.8.0",
-    "jest": "^20.0.4",
-    "nodemon": "^1.11.0"
+    "jest": "^20.0.4"
   },
   "jest": {
     "testPathIgnorePatterns": [

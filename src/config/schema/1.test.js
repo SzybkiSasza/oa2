@@ -11,7 +11,7 @@ describe('OAuth 1.0 config schema', () => {
     expect(oauth1Schema).toBeInstanceOf(Object);
   });
 
-  it('Requires 3 URLs', () => {
+  it('Requires accessTokenURL', () => {
     const config = {
       authURL: 'https://some-url.com/auth',
     };

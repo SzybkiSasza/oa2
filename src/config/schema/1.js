@@ -3,6 +3,7 @@ import backoff from './schema-parts/backoff';
 export default {
   type: 'object',
   properties: {
+    // URLs
     accessTokenURL: {
       type: 'string',
       format: 'url',
@@ -15,6 +16,8 @@ export default {
       type: 'string',
       format: 'url',
     },
+
+    // Protocol defaults
     signatureMethod: {
       type: 'string',
       default: 'HMAC-SHA1',
@@ -23,6 +26,8 @@ export default {
       type: 'string',
       default: '1.0',
     },
+
+    // Standard backoff schema
     backoff,
   },
   required: ['accessTokenURL'],
