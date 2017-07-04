@@ -1,6 +1,7 @@
-import backoff from './schema-parts/backoff';
+import backoff from '../common/backoff';
 
 export default {
+  id: 'OAuth1/config',
   type: 'object',
   properties: {
     // URLs

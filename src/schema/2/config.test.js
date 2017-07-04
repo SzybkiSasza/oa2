@@ -4,7 +4,7 @@ const ajv = new Ajv({
   useDefaults: true,
 });
 
-import oauth2Schema from './2';
+import oauth2Schema from './config';
 
 describe('OAuth 2.0 config schema', () => {
   it('Is a defined object', () => {
