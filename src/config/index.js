@@ -2,6 +2,7 @@ import Ajv from 'ajv';
 import {cloneDeep} from 'lodash';
 
 import schema1 from './schema/1';
+import schema2 from './schema/2';
 
 const ajv = new Ajv({
   $data: true,
@@ -11,12 +12,14 @@ const ajv = new Ajv({
 /**
  * Builds the config for OAuth client
  * @param  {Object} config         Input config
- * @param  {String} [version='1.0'] OAuth version, e.g. 1.0, 2.0
+ * @param  {String} [version='2.0'] OAuth version, e.g. 1.0, 2.0
  * @return {Object}                Generated config, merged with defaults
  */
-export function build(config, version = '1.0') {
+export function build(config, version = '2.0') {
   checkOAuthVersion(version);
-  return validateConfig(config, schema1);
+  const schema = version === '2.0' ? schema2 : schema1;
+
+  return validateConfig(config, schema);
 }
 
 /**
@@ -25,7 +28,8 @@ export function build(config, version = '1.0') {
  * @param  {String} version           OAuth version
  */
 function checkOAuthVersion(version) {
-  if (version !== '1.0') {
+  // Only 2 versions now available, the fastest check
+  if (version !== '2.0' && version !== '1.0') {
     throw new Error(`Unsupported OAuth version passed: ${version}`);
   }
 }
