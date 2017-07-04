@@ -11,17 +11,15 @@ describe('OAuth 2.0 config schema', () => {
     expect(oauth2Schema).toBeInstanceOf(Object);
   });
 
-  describe('Requires URLs, responseType and scope', () => {
+  describe('Requires URLs and responseType', () => {
     const config = {
       authURL: 'https://some-url.com/auth',
-      tokenURL: 'https://some-url.com/token',
-      responseType: 'code',
     };
 
     const result = ajv.validate(oauth2Schema, config);
     expect(result).toEqual(false);
     expect(ajv.errorsText())
-      .toEqual(`data should have required property 'scope'`);
+      .toEqual(`data should have required property 'tokenURL'`);
   });
 
   describe('Allows only specific response types', () => {

@@ -21,7 +21,7 @@ export default {
     },
     responseType: {
       type: 'string',
-      enum: ['token', 'code'],
+      enum: ['code', 'token', 'refresh_token'],
       default: 'code',
     },
     scope: {
@@ -29,12 +29,8 @@ export default {
       items: {
         type: 'string',
       },
+      default: [],
       uniqueItems: true,
-    },
-
-    // Additional, implementation-specific parameters
-    custom: {
-      type: 'object',
     },
 
     // Standard backoff schema
