@@ -1,6 +1,6 @@
 {
   "name": "oa2",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "OAuth 1/2 made simple",
   "main": "lib/oauth",
   "scripts": {
