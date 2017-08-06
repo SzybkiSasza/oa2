@@ -11,7 +11,7 @@ describe('OAuth 2.0 config schema', () => {
     expect(oauth2Schema).toBeInstanceOf(Object);
   });
 
-  describe('Requires URLs and responseType', () => {
+  it('Requires URLs and responseType', () => {
     const config = {
       authURL: 'https://some-url.com/auth',
     };
@@ -22,7 +22,7 @@ describe('OAuth 2.0 config schema', () => {
       .toEqual(`data should have required property 'tokenURL'`);
   });
 
-  describe('Allows only specific response types', () => {
+  it('Allows only specific response types', () => {
     const config = {
       authURL: 'https://some-url.com/auth',
       tokenURL: 'https://some-url.com/token',
@@ -35,7 +35,7 @@ describe('OAuth 2.0 config schema', () => {
       `data.responseType should be equal to one of the allowed values`);
   });
 
-  describe('Sets default values', () => {
+  it('Sets default values', () => {
     const config = {
       authURL: 'https://some-url.com/auth',
       tokenURL: 'https://some-url.com/token',
@@ -52,7 +52,7 @@ describe('OAuth 2.0 config schema', () => {
     }));
   });
 
-  describe('Allows passing custom object', () => {
+  it('Allows passing custom object', () => {
     const config = {
       authURL: 'https://some-url.com/auth',
       tokenURL: 'https://some-url.com/token',
@@ -70,7 +70,7 @@ describe('OAuth 2.0 config schema', () => {
     expect(ajv.errorsText()).toEqual(`No errors`);
   });
 
-  describe('Generates default backoff settings', () => {
+  it('Generates default backoff settings', () => {
     const config = {
       authURL: 'https://some-url.com/auth',
       tokenURL: 'https://some-url.com/token',

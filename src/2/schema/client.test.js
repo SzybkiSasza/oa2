@@ -11,7 +11,7 @@ describe('OAuth 2.0 client schema', () => {
     expect(clientSchema).toBeInstanceOf(Object);
   });
 
-  describe('Requires three parameters', () => {
+  it('Requires three parameters', () => {
     const client = {
       client_id: 'abc',
       client_secret: 'def',
@@ -23,7 +23,7 @@ describe('OAuth 2.0 client schema', () => {
       .toEqual(`data should have required property 'redirect_uri'`);
   });
 
-  describe('Passes if client meets the schema', () => {
+  it('Passes if client meets the schema', () => {
     const client = {
       client_id: 'abc',
       client_secret: 'def',
